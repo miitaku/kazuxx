@@ -66,7 +66,7 @@
     }
 
     textarea {
-      height: 120px;
+      height: 140px;
       resize: none;
     }
   </style>
@@ -76,15 +76,42 @@
   <div class="title-box">kazu-XX</div>
 
   <div class="container">
-    <input type="text" placeholder="キーワードを入力" />
-    <select>
-      <option>共感</option>
-      <option>情熱</option>
-      <option>危機感</option>
+    <input type="text" id="keyword" placeholder="キーワードを入力" />
+    <select id="tone">
+      <option value="共感">共感</option>
+      <option value="衝撃">衝撃</option>
+      <option value="信頼">信頼</option>
+      <option value="その他">その他</option>
     </select>
-    <button>出す</button>
-    <textarea readonly>ここにコピーが表示されます</textarea>
+    <button onclick="generateCopy()">出す</button>
+    <textarea id="output" readonly>ここにコピーが表示されます</textarea>
   </div>
+
+  <script>
+    function generateCopy() {
+      const k = document.getElementById("keyword").value.trim();
+      const t = document.getElementById("tone").value;
+      const output = document.getElementById("output");
+      let o = "";
+
+      if (!k) {
+        o = "⚠️ キーワードを入れてください";
+      } else {
+        o = "【生成コピー】\n";
+        if (t === "共感") {
+          o += `「${k}」…あなたの気持ち、僕も分かります。小さな一歩が人生を変える。その手伝いをさせてください。\n#共感 #kazuXX #仕組み`;
+        } else if (t === "衝撃") {
+          o += `「${k}」…それ、3年前の常識かも？今は仕組みで結果が出る時代です。\n#衝撃 #常識破壊 #kazuXX`;
+        } else if (t === "信頼") {
+          o += `「${k}」で、すでに3万人が動き出しています。仕組みがあなたを支えます。\n#実績 #信頼 #kazuXX`;
+        } else {
+          o += `「${k}」を体験した瞬間、すべてが変わりました。衝撃よりも、安心。僕がその声を届けます。\n#体験談 #安心 #kazuXX`;
+        }
+      }
+
+      output.value = o;
+    }
+  </script>
 
 </body>
 </html>
