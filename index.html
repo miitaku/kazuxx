@@ -1,112 +1,89 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kazu‑XX</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>kazu-XX</title>
   <style>
-    html, body {
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      font-family: sans-serif;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
-    body {
-      display: block;
-      padding: 20px;
+    .title-box {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .container {
-      background: #ffffff;
+      background-color: white;
       padding: 30px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 480px;
-      box-sizing: border-box;
-      margin: 0 auto;
+      max-width: 420px;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .form-block {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input, select, button {
+    input, select, textarea {
+      width: 100%;
       padding: 12px;
+      margin-bottom: 15px;
       font-size: 16px;
-      border-radius: 5px;
       border: 1px solid #ccc;
-      width: 100%;
+      border-radius: 8px;
       box-sizing: border-box;
     }
 
     button {
-      background-color: #ff66a5;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+      width: 100%;
+      padding: 14px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 18px;
       font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    #out {
-      margin-top: 20px;
-      white-space: pre-wrap;
-      padding: 15px;
-      background: #fefefe;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      min-height: 120px;
+    button:hover {
+      background-color: #ff3b9d;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
     }
   </style>
 </head>
 <body>
+
+  <div class="title-box">kazu-XX</div>
+
   <div class="container">
-    <h1>kazu‑XX</h1>
-    <div class="form-block">
-      <input id="kw" placeholder="キーワードを入力" />
-      <select id="tone">
-        <option>共感</option>
-        <option>衝撃</option>
-        <option>信頼</option>
-        <option>体験談</option>
-      </select>
-      <button onclick="g()">出す</button>
-    </div>
-    <div id="out">ここにコピーが表示されます</div>
+    <input type="text" placeholder="キーワードを入力" />
+    <select>
+      <option>共感</option>
+      <option>情熱</option>
+      <option>危機感</option>
+    </select>
+    <button>出す</button>
+    <textarea readonly>ここにコピーが表示されます</textarea>
   </div>
 
-  <script>
-    function g(){
-      var k = document.getElementById('kw').value.trim();
-      var t = document.getElementById('tone').value;
-      var o = '';
-
-      if (!k) {
-        o = '⚠️ キーワードを入れてください';
-      } else {
-        o = '【生成コピー】\n';
-        if (t === '共感') {
-          o += `「${k}」…あなたの気持ち、僕も分かります。小さな一歩が人生を変える。その手伝いをさせてください。\n#共感 #kazuXX #仕組み;`;
-        } else if (t === '衝撃') {
-          o += `「${k}」…それ、3年前の常識かも？今は仕組みで結果が出る時代です。\n#衝撃 #常識破壊 #kazuXX;`;
-        } else if (t === '信頼') {
-          o += `「${k}」で、すでに3万人が動き出しています。仕組みがあなたを支えます。\n#実績 #信頼 #kazuXX;`;
-        } else {
-          o += `「${k}」を体験した瞬間、すべてが変わりました。衝撃よりも、安心。僕がその声を届けます。\n#体験談 #安心 #kazuXX;`;
-        }
-      }
-
-      document.getElementById('out').innerText = o;
-    }
-  </script>
 </body>
 </html>
