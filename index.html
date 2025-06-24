@@ -1,0 +1,81 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>kazu‑XX</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f5f5f5;
+      font-family: sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    textarea, input, select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 8px 12px;
+      background: #ff66a5;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+    #out {
+      flex-grow: 1;
+      white-space: pre-wrap;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>kazu‑XX 試作版</h2>
+    <input id="kw" placeholder="キーワードを入力"/>
+    <select id="tone">
+      <option>共感</option>
+      <option>衝撃</option>
+      <option>信頼</option>
+      <option>体験談</option>
+    </select>
+    <button onclick="g()">出す</button>
+    <div id="out">ここにコピーが表示されます</div>
+  </div>
+  <script>
+    function g(){
+      var k=document.getElementById('kw').value.trim(),
+          t=document.getElementById('tone').value,
+          o='';
+      if(!k){
+        o='⚠️ キーワードを入れてください';
+      } else {
+        o='【生成コピー】\n';
+        if(t==='共感'){
+          o+=`「${k}」…あなたの気持ち、僕も分かります。小さな一歩が人生を変える。その手伝いをさせてください。\n#共感 #kazuXX #仕組み;`;
+        } else if(t==='衝撃'){
+          o+=`「${k}」…それ、3年前の常識かも？今は仕組みで結果が出る時代です。\n#衝撃 #常識破壊 #kazuXX;`;
+        } else if(t==='信頼'){
+          o+=`「${k}」で、すでに3万人が動き出しています。仕組みがあなたを支えます。\n#実績 #信頼 #kazuXX;`;
+        } else {
+          o+=`「${k}」を体験した瞬間、すべてが変わりました。衝撃よりも、安心。僕がその声を届けます。\n#体験談 #安心 #kazuXX;`;
+        }
+      }
+      document.getElementById('out').innerText=o;
+    }
+  </script>
+</body>
+</html>
