@@ -13,6 +13,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
     .title-box {
@@ -35,6 +36,9 @@
       width: 100%;
       max-width: 420px;
       box-sizing: border-box;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     input, select, textarea {
@@ -66,9 +70,10 @@
     }
 
     textarea {
-      height: 140px;
+      height: 240px;
       resize: none;
     }
+
   </style>
 </head>
 <body>
@@ -81,7 +86,6 @@
       <option value="共感">共感</option>
       <option value="衝撃">衝撃</option>
       <option value="信頼">信頼</option>
-      <option value="その他">その他</option>
     </select>
     <button onclick="generateCopy()">出す</button>
     <textarea id="output" readonly>ここにコピーが表示されます</textarea>
@@ -104,8 +108,6 @@
           o += `「${k}」…それ、3年前の常識かも？今は仕組みで結果が出る時代です。\n#衝撃 #常識破壊 #kazuXX`;
         } else if (t === "信頼") {
           o += `「${k}」で、すでに3万人が動き出しています。仕組みがあなたを支えます。\n#実績 #信頼 #kazuXX`;
-        } else {
-          o += `「${k}」を体験した瞬間、すべてが変わりました。衝撃よりも、安心。僕がその声を届けます。\n#体験談 #安心 #kazuXX`;
         }
       }
 
